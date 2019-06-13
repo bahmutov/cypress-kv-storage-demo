@@ -1,0 +1,14 @@
+{
+  "name": "cypress-kv-storage-demo",
+  "version": "1.0.0",
+  "description": "Example testing built-in KV Storage module from Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com> (https://glebbahmutov.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "3.3.1"
+  }
+}

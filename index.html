@@ -1,0 +1,18 @@
+<body>
+  <script type="module">
+    import {storage} from 'std:kv-storage';
+
+    if (window.Cypress) {
+      window.Cypress.storage = storage
+    }
+
+    const main = async () => {
+      const foo = await storage.get('foo');
+      console.log('got foo', foo)
+      await storage.set('foo', 'foo');
+      console.log('saved foo')
+    };
+
+    main();
+  </script>
+</body>
