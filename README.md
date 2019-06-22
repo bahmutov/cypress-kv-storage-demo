@@ -8,8 +8,10 @@ Need to use Chrome 74+ to run these tests
 
 ```shell
 npm install
-npm run cy:open
+npm run dev
 ```
+
+Starts application at `localhost:8080` and opens Cypress GUI
 
 ## Tests
 
