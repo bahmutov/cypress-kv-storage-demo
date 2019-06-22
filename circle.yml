@@ -11,3 +11,5 @@ workflows:
       - cypress/run:
           executor: with-chrome
           browser: chrome
+          start: npm start
+          no-workspace: true
