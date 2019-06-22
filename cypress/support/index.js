@@ -5,4 +5,5 @@ before(() => {
   expect(Cypress.browser)
     .to.have.property('name')
     .equal('chrome', 'this demo only runs in regular Chrome v74+')
+  // could check browser major version too
 })

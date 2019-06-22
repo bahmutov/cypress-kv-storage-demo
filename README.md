@@ -10,3 +10,8 @@ Need to use Chrome 74+ to run these tests
 npm install
 npm run cy:open
 ```
+
+## Tests
+
+- checks that we are running Chrome browser in [cypress/support/index.js](cypress/support/index.js)
+- shows simple counter tests in [cypress/integration/first-spec.js](cypress/integration/first-spec.js)

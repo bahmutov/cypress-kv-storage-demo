@@ -4,12 +4,16 @@
   "description": "Example testing built-in KV Storage module from Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cy:open": "cypress open"
+    "test": "cypress run --browser chrome",
+    "cy:open": "cypress open",
+    "start": "http-server public",
+    "dev": "start-test 8080 cy:open"
   },
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com> (https://glebbahmutov.com/)",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "3.3.1"
+    "cypress": "3.3.1",
+    "http-server": "0.11.1",
+    "start-server-and-test": "1.9.1"
   }
 }
