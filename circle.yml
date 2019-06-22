@@ -1,0 +1,13 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+executors:
+  with-chrome:
+    docker:
+      - image: cypress/browsers:node10.2.1-chrome74
+workflows:
+  build:
+    jobs:
+      - cypress/run:
+          executor: with-chrome
+          browser: chrome
