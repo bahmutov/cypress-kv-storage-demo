@@ -1,0 +1,37 @@
+<body>
+  <div>Current count: <span id="counter"></span></div>
+  <button id="inc">Increment</button>
+
+  <!-- the code below only runs in modern browsers -->
+  <script type="module">
+    import {storage} from 'std:kv-storage';
+
+    const counter = document.getElementById('counter')
+    const button = document.getElementById('inc')
+
+    const getCounter = async () => {
+      let k = await storage.get('count')
+      if (isNaN(k)) {
+         // start with zero the very first time
+        k = 0
+      }
+      return k
+    }
+
+    const showCounter = async () => {
+      counter.innerText = await getCounter()
+    }
+
+    const increment = async () => {
+      let k = await getCounter()
+      k += 1
+      await storage.set('count', k)
+      await showCounter()
+    }
+
+    // increment and show new count on button click
+    button.addEventListener('click', increment)
+    // show stored value at the start
+    showCounter()
+  </script>
+</body>
