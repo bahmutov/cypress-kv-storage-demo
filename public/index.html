@@ -6,6 +6,11 @@
   <script type="module">
     import {storage} from 'std:kv-storage';
 
+    if (window.Cypress) {
+      // pass storage module to the testing code
+      window.Cypress.storage = storage
+    }
+
     const counter = document.getElementById('counter')
     const button = document.getElementById('inc')
 
@@ -14,6 +19,7 @@
       if (isNaN(k)) {
          // start with zero the very first time
         k = 0
+        await storage.set('count', k)
       }
       return k
     }
