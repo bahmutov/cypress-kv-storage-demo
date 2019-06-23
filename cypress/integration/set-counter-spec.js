@@ -8,7 +8,14 @@ beforeEach(() => {
 // Cypress bundler chokes on this
 // import { storage } from 'std:kv-storage'
 
-it.only('saves the count in storage', () => {
+Cypress.Commands.add('getCount', () => {
+  return Cypress.storage.get('count')
+})
+Cypress.Commands.add('setCount', n => {
+  return Cypress.storage.set('count', n)
+})
+
+it('saves the count in storage explicit', () => {
   cy.visit('/').then(() => {
     // confirm our application has passed us "Cypress.storage" reference
     expect(Cypress).to.have.property('storage')
@@ -26,6 +33,31 @@ it.only('saves the count in storage', () => {
     .click()
     .then(() => Cypress.storage.get('count'))
     .should('equal', 2)
+})
+
+it('saves the count in storage', () => {
+  cy.visit('/')
+  cy.get('#counter').should('have.text', '0')
+  cy.get('#inc')
+    .click()
+    .getCount()
+    .should('equal', 1)
+
+  cy.get('#inc')
+    .click()
+    .getCount()
+    .should('equal', 2)
+})
+
+it('reads count from storage', () => {
+  cy.visit('/')
+  // adding assertion ensures application has loaded
+  // and prevents race condition
+  cy.get('#counter').should('have.text', '0')
+  // now we are ready to write our value
+  cy.setCount(100).reload()
+  // and check it is used after reloading
+  cy.get('#counter').should('have.text', '100')
 })
 
 it('starts with 100', () => {
