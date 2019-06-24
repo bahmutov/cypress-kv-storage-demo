@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Starts application at `localhost:8080` and opens Cypress GUI
+Starts application at `localhost:8080` and opens Cypress GUI. See application code in [public/index.html](public/index.html) file.
 
 ## Tests
 
